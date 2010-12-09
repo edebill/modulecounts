@@ -13,8 +13,8 @@ development:
   encoding: unicode
   database: modulecounts_development
   pool: 5
-  username: modulecounts
-  password:
+  username: postgres
+  password: sergtsop
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -39,8 +39,8 @@ test:
   encoding: unicode
   database: modulecounts_test
   pool: 5
-  username: modulecounts
-  password:
+  username: postgres
+  password: sergtsop
 
 production:
   adapter: postgresql

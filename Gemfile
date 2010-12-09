@@ -29,3 +29,6 @@ gem 'pg'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
+gem 'httparty'
