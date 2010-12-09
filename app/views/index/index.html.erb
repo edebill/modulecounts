@@ -1,0 +1,10 @@
+<h1>Module Counts</h1>
+<table>
+<% @repositories.each do |r| %>
+  <tr>
+    <td><%= r.name %></td>
+    <td><%= r.latest_count.value %></td>
+    <td><%= r.latest_count.record_date.to_date %></td>
+  </tr>
+<% end %>
+</table>
