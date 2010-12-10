@@ -2,7 +2,7 @@
 <table>
 <% @repositories.each do |r| %>
   <tr>
-    <td><%= r.name %></td>
+    <td><a href="<%= r.url %>"><%= r.name %></a></td>
     <td><%= r.latest_count.value %></td>
     <td><%= r.latest_count.record_date.to_date %></td>
   </tr>
