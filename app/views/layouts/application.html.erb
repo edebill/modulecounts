@@ -3,7 +3,8 @@
 <head>
   <title>Modulecounts</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag "/stylesheets/smoothness/jquery-ui-1.8.7.custom.css" %>
+  <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
 <script type="text/javascript">
 
@@ -17,10 +18,90 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
+    $(function() {
+       $("#about").click(function() {
+          $("#about_box").dialog({ maxWidth: 500,
+                                   minWidth: 400,
+                                   show: "slide",
+                                   title: "About Module Counts" }); 
+       });
+     });
+
 </script>
+<style>
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background: #000000;
+}
+
+.pagebody {
+    position: relative;
+    width: 600px;
+    padding: 30px 30px 30px 30px;
+    margin: auto;
+    margin-top: -10px;
+    background: #ffffff;
+}
+
+.pagecontent {
+    margin-bottom: 40px;
+}
+
+a {
+    color: #000000;
+}
+
+a:visited {
+    color: #000000;
+}
+
+div.footer {
+    position: relative;
+    margin-bottom: 0px 150px 0px -20px;
+    width: 100%;
+    border-top: 1px solid #999;
+}
+
+div.footer a {
+    float: right;
+}
+
+</style>
 </head>
 <body>
+<div class="pagebody">
+  <div class="pagecontent">
 
-<%= yield %>
+    <%= yield %>
+
+  </div>
+    <div class="footer">
+      <a href="#" id="about">about</a>
+      <div id="about_box" style="display: none">
+
+
+      <p>I started manually
+      tracking the number of modules in the
+      Perl, Python and Ruby repositories as part of selecting a development
+      framework.  Eventually, I automated it and put it up on Heroku for
+      others to see.  The gap between doing it manually and spending
+      some <a href="http://cafebedouins.com">Cafe Bedouins</a> time to
+      automate it is why there's
+      a big gap in the data.</p>
+
+      <p>Data is collected by scraping the relevant websites once a day
+      via a cron job and then stored in a Postgresql database for later
+      retrieval.  Growth rates are calculated by averaging data over the 
+      last week.</p>
+
+      <p>Source code is available at <a href="http://github.com/edebill/modulecounts">github</a>.
+      </p>
+      
+      <p>-<a href="http://erik.debill.org/">Erik DeBill</a>.</p>
+
+      </div>
+    </div>
+</div>
 </body>
 </html>

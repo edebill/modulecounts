@@ -27,7 +27,7 @@ class Repository < ActiveRecord::Base
     stats = self.repository_stats || RepositoryStats.new(:repository_id => self.id)
 
     stats.total = last_week.last.value
-    stats.modules_day = (last_week.last.value - last_week.first.value) / ((last_week.last.record_date - last_week.first.record_date) / 1.day )
+    stats.modules_day = (last_week.last.value - last_week.first.value) / ((last_week.last.record_date - last_week.first.record_date) / 1.day ).round
 
     stats.save
   end

@@ -1,10 +1,53 @@
+<script>
+  $(document).ready(function(){
+    var data = [];
+    <% @repositories.each do |r| %>
+      var entries = [ <%= r.counts.order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
+      data.push({ label: "<%= r.name %>", data: entries });
+    <% end %>
+    $.plot($("#count-graph"), data, { xaxis: { mode: "time" },
+                                      legend: { position: "se" } }); 
+
+  });
+</script>
+<style>
+table.module-data {
+    width: 500px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.module-data td {
+    text-align: center;
+}
+
+td.left {
+    text-align: left;
+}
+
+#count-graph {
+    margin: auto;
+    width: 500px;
+    height: 300px;
+}
+</style>
 <h1>Module Counts</h1>
-<table>
+
+<div id="count-graph"></div>
+
+<table class="module-data">
+  <tr>
+    <th></th>
+    <th>Total Modules</th>
+    <th>Growth Rate</th>
+  </tr>
 <% @repositories.each do |r| %>
   <tr>
-    <td><a href="<%= r.url %>"><%= r.name %></a></td>
+    <td class="left"><a href="<%= r.url %>"><%= r.name %></a></td>
     <td><%= r.repository_stats.total %></td>
-    <td><%= r.repository_stats.modules_day %></td>
+    <td><%= r.repository_stats.modules_day %>/day</td>
   </tr>
 <% end %>
 </table>
+
