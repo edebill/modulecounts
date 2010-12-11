@@ -43,11 +43,13 @@ td.left {
     <th>Growth Rate</th>
   </tr>
 <% @repositories.each do |r| %>
+  <% if r.repository_stats %>
   <tr>
     <td class="left"><a href="<%= r.url %>"><%= r.name %></a></td>
     <td><%= r.repository_stats.total %></td>
     <td><%= r.repository_stats.modules_day %>/day</td>
   </tr>
+  <% end %>
 <% end %>
 </table>
 
