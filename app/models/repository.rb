@@ -24,12 +24,15 @@ class Repository < ActiveRecord::Base
   def update_stats
     last_week = self.counts.where("record_date > ?", Time.now - 7.days).order(:record_date)
 
-    stats = self.repository_stats || RepositoryStats.new(:repository_id => self.id)
+    if last_week && (last_week.length > 1)
 
-    stats.total = last_week.last.value
-    stats.modules_day = (last_week.last.value - last_week.first.value) / ((last_week.last.record_date - last_week.first.record_date) / 1.day ).round
+      stats = self.repository_stats || RepositoryStats.new(:repository_id => self.id, :modules_day => 0, :total => 0)
 
-    stats.save
+      stats.total = last_week.last.value
+      stats.modules_day = ((last_week.last.value - last_week.first.value) / ((last_week.last.record_date - last_week.first.record_date) / 1.day )).round
+
+      stats.save
+    end
   end
 
 end
