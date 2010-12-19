@@ -1,12 +1,62 @@
 <script>
-  $(document).ready(function(){
-    var data = [];
+
+    var all_time = [];
     <% @repositories.each do |r| %>
+      <% if r.graph %>
       var entries = [ <%= r.counts.order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
-      data.push({ label: "<%= r.name %>", data: entries });
+      all_time.push({ label: "<%= r.name %>", data: entries });
+      <% end %>
     <% end %>
-    $.plot($("#count-graph"), data, { xaxis: { mode: "time" },
-                                      legend: { position: "se" } }); 
+
+    var last_month = [];
+    <% @repositories.each do |r| %>
+      <% if r.graph %>
+      var entries = [ <%= r.counts.where("record_date > ?", Time.now - 1.month).order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
+      last_month.push({ label: "<%= r.name %>", data: entries });
+      <% end %>
+    <% end %>
+
+    var last_week = [];
+    <% @repositories.each do |r| %>
+      <% if r.graph %>
+      var entries = [ <%= r.counts.where("record_date > ?", Time.now - 1.week).order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
+      last_week.push({ label: "<%= r.name %>", data: entries });
+      <% end %>
+    <% end %>
+
+  function show_graph(dataset) {
+    $.plot($("#count-graph"), dataset, {
+                              series: { lines: { show: true },
+                                        points: { show: true,
+                                                  radius: 1 }},
+                              xaxis: { mode: "time" },
+                              legend: { position: "se" } }); 
+    
+  }
+
+  function do_click(dataset, id) {
+    $(".graph-control").removeClass("selected");
+    $("#" + id).addClass("selected");
+    show_graph(dataset);
+  }
+
+  $(document).ready(function(){
+    show_graph(all_time);
+
+    $("#all-time").click(function(event) {
+      do_click(all_time, "all-time");
+      return false;
+    });
+
+    $("#last-month").click(function(event) {
+      do_click(last_month, "last-month");
+      return false;
+    });
+
+    $("#last-week").click(function(event) {
+      do_click(last_week, "last-week");
+      return false;
+    });
 
   });
 </script>
@@ -31,10 +81,29 @@ td.left {
     width: 500px;
     height: 300px;
 }
+
+#graph-controls {
+    margin: auto;
+    margin-top: 10px;
+    width: 350px;
+}
+
+#graph-controls a {
+    margin: 0px 10px 0px 10px;
+}
+
+.selected {
+    font-weight: bold;
+}
+
 </style>
 <h1>Module Counts</h1>
 
 <div id="count-graph"></div>
+<div id="graph-controls">now showing: <a href="#" class="graph-control selected" id="all-time">all time</a>
+    <a href="#" class="graph-control" id="last-month">last month</a>
+    <a href="#" class="graph-control" id="last-week">last week</a>
+</div>
 
 <table class="module-data">
   <tr>
@@ -52,7 +121,7 @@ td.left {
     <% recent = r.last_week %>
     <% (0..(days_to_show - 1)).each do |i| %>
       <% index = - days_to_show + i %>
-      <td><%= recent[index].value %></td>
+      <td><%= recent[index].try(:value) %></td>
     <% end %>
     <td><%= r.repository_stats.modules_day %>/day</td>
   </tr>
@@ -65,6 +134,7 @@ retrieval.  Growth rates are calculated by averaging data over the
 last week.
 </p>
 <p>
-The Pear (PHP) was only recently added and hasn't accumulated much
-data.
+The Pear (PHP) was only added recently and hasn't accumulated much
+data.  It's so far off from the others that it pretty much blows the
+graph, so it isn't included.
 </p>

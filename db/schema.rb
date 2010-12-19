@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101211041442) do
+ActiveRecord::Schema.define(:version => 20101219170711) do
 
   create_table "counts", :force => true do |t|
     t.integer  "repository_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20101211041442) do
     t.datetime "last_checked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "graph"
   end
 
   create_table "repository_stats", :force => true do |t|

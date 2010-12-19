@@ -12,7 +12,6 @@ class Repository < ActiveRecord::Base
     start_date = start.to_date
     records = self.counts.where("record_date > ? and record_date < ?", start_date, start_date + days.days).order(:record_date)
     sequence = []
-
     (0 ..days - 1).collect do |i|
       day = (start_date + i.days).day
       last = nil
