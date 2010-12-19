@@ -12,7 +12,7 @@
 </script>
 <style>
 table.module-data {
-    width: 500px;
+    width: 570px;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -39,13 +39,21 @@ td.left {
 <table class="module-data">
   <tr>
     <th></th>
-    <th>Total Modules</th>
-    <th>Growth Rate</th>
+    <% days_to_show = 4 %>
+    <% (0..(days_to_show - 1)).each do |i| %>
+      <% index = days_to_show - i - 1 %>
+      <th><%= (Time.now - (index).days).to_date %></th>
+    <% end %>
+    <th>Avg Growth</th>
   </tr>
 <% @repositories.each do |r| %>
   <tr>
     <td class="left"><a href="<%= r.url %>"><%= r.name %></a></td>
-    <td><%= r.repository_stats.total %></td>
+    <% recent = r.last_week %>
+    <% (0..(days_to_show - 1)).each do |i| %>
+      <% index = - days_to_show + i %>
+      <td><%= recent[index].value %></td>
+    <% end %>
     <td><%= r.repository_stats.modules_day %>/day</td>
   </tr>
 <% end %>

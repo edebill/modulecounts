@@ -4,6 +4,30 @@ class Repository < ActiveRecord::Base
   has_many :counts, :dependent => :destroy
   has_one :repository_stats
 
+  def last_week
+    day_sequence(Time.now - 6.days, 7)
+  end
+
+  def day_sequence(start, days)
+    start_date = start.to_date
+    records = self.counts.where("record_date > ? and record_date < ?", start_date, start_date + days.days).order(:record_date)
+    sequence = []
+
+    (0 ..days - 1).collect do |i|
+      day = (start_date + i.days).day
+      last = nil
+      records.each do |r| 
+        if r.record_date.day == day
+          last = r
+        end
+      end
+
+      sequence << last
+    end
+
+    sequence
+  end
+
   def fetch_count
     page = HTTParty.get(self.url)
     if md = page.match(self.regex)
