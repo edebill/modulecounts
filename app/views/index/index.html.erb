@@ -123,7 +123,7 @@ td.left {
       <% index = - days_to_show + i %>
       <td><%= recent[index].try(:value) %></td>
     <% end %>
-    <td><%= r.repository_stats.modules_day %>/day</td>
+    <td><%= r.repository_stats.try(:modules_day).to_i %>/day</td>
   </tr>
 <% end %>
 </table>
