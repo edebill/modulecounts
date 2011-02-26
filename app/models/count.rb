@@ -6,4 +6,7 @@ class Count < ActiveRecord::Base
 
   validates_numericality_of :value, :integer => true
 
+  def self.earliest
+    Count.order("record_date asc").limit(1).first
+   end
 end

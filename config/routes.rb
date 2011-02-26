@@ -1,6 +1,8 @@
 Modulecounts::Application.routes.draw do
   get "index/index"
 
+  get 'modulecounts.csv' => "index#index", :format => 'csv'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -2,27 +2,42 @@
 
     var all_time = [];
     <% @repositories.each do |r| %>
-      <% if r.graph %>
       var entries = [ <%= r.counts.order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
       all_time.push({ label: "<%= r.name %>", data: entries });
-      <% end %>
     <% end %>
 
-    var last_month = [];
-    <% @repositories.each do |r| %>
-      <% if r.graph %>
-      var entries = [ <%= r.counts.where("record_date > ?", Time.now - 1.month).order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
-      last_month.push({ label: "<%= r.name %>", data: entries });
-      <% end %>
-    <% end %>
+  function repo_is_selected(repo) {
+    var selected = [];
+    jQuery.each($('input:[name="repo"]:checked'), function(index, input) {
+      selected.push(input.value);
+    });
 
-    var last_week = [];
-    <% @repositories.each do |r| %>
-      <% if r.graph %>
-      var entries = [ <%= r.counts.where("record_date > ?", Time.now - 1.week).order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
-      last_week.push({ label: "<%= r.name %>", data: entries });
-      <% end %>
-    <% end %>
+    len =  jQuery.grep(selected, function(n,i) { 
+       return repo == n }).length;
+
+    return len > 0;
+  }
+
+  function show_since(time) {
+    dataset = [];
+
+    for(i = 0; i < all_time.length; i++){
+      if( repo_is_selected(all_time[i]['label']) ){
+        entries = [];
+        for(j = 0; j < all_time[i]['data'].length; j++) {
+          datapoint = all_time[i]['data'][j];
+          if(datapoint[0] > time) {
+            entries.push(datapoint);
+          }
+        }
+        dataset.push({ 'label': all_time[i]['label'],
+                       'data': entries });
+      }
+    }
+  
+    show_graph(dataset);
+  }
+    
 
   function show_graph(dataset) {
     $.plot($("#count-graph"), dataset, {
@@ -34,35 +49,20 @@
     
   }
 
-  function do_click(dataset, id) {
-    $(".graph-control").removeClass("selected");
-    $("#" + id).addClass("selected");
-    show_graph(dataset);
-  }
 
   $(document).ready(function(){
-    show_graph(all_time);
+    show_since(0);
 
-    $("#all-time").click(function(event) {
-      do_click(all_time, "all-time");
-      return false;
-    });
-
-    $("#last-month").click(function(event) {
-      do_click(last_month, "last-month");
-      return false;
-    });
-
-    $("#last-week").click(function(event) {
-      do_click(last_week, "last-week");
-      return false;
+    $("input").click(function(event) {
+      start = $('input:[name="start"]:checked').val();
+      show_since(start);
     });
 
   });
 </script>
 <style>
 table.module-data {
-    width: 570px;
+    width: 650px;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -76,44 +76,97 @@ td.left {
     text-align: left;
 }
 
+td.right,th.right {
+    text-align: right;
+}
+
+#graph-center {
+    margin: auto;
+    width: 700px;
+}
+
+#graph-display {
+    position: relative;
+    height: 400px;
+}
+
 #count-graph {
-    margin: auto;
-    width: 500px;
-    height: 300px;
+    float: left;
+    width: 550px;
+    height: 350px;
 }
 
-#graph-controls {
-    margin: auto;
-    margin-top: 10px;
-    width: 350px;
+#content-control {
+    float: right;
+    padding-left: 15px;
 }
 
-#graph-controls a {
-    margin: 0px 10px 0px 10px;
+#time-controls {
+    float: left;
+    clear: left;
+    padding-top: 10px;
+    width: 600px;
+    
 }
 
-.selected {
+.controls ul {
+    padding: 0px;
+}
+
+.controls li {
+    list-style-type: none;
+}
+
+.controls li.list_header {
+    margin: 0px 0px 5px 15px;
     font-weight: bold;
+}
+
+.horizontal li {
+    margin-left: 5px;
+    display: inline;
 }
 
 </style>
 <h1>Module Counts</h1>
-
+<div id="graph-center">
+<div id="graph-display">
+<form id="graph">
 <div id="count-graph"></div>
-<div id="graph-controls">now showing: <a href="#" class="graph-control selected" id="all-time">all time</a>
-    <a href="#" class="graph-control" id="last-month">last month</a>
-    <a href="#" class="graph-control" id="last-week">last week</a>
+<div id="content-control" class="vertical controls">
+  <ul>
+  <li class="list_header">Include</li>
+  
+    <% @repositories.each do |r| %>
+  <li> <input type="checkbox" name="repo" value="<%= r.name %>"
+     <% if r.graph %>checked<% end %>> <%= r.name %></li>
+    <% end %>
+  </ul>
 </div>
-
+<div id="time-controls" class="horizontal controls">
+  <ul>
+    <li class="list_header">time period</li>
+    <li><input type="radio" name="start" value="0" checked > all time</li>
+    <% if Count.earliest.record_date < Time.now - 1.year %>
+    <li><input type="radio" name="start" value="<%= (Time.now - 1.year).utc.to_i * 1000 %>"> last year</li>
+    <% end %>
+<% [90, 30, 7].each do |days| %>
+    <li><input type="radio" name="start" value="<%= (Time.now - days.days).utc.to_i * 1000 %>"> last <%= days %> days</li>
+<% end %>
+  </ul>
+</div>
+</form>
+</div>
+</div>
 <table class="module-data">
   <tr>
     <th></th>
-    <% days_to_show = 4 %>
+    <% days_to_show = 5 %>
     <% (0..(days_to_show - 1)).each do |i| %>
       <% index = days_to_show - i - 1 %>
       <th><%= (Time.now - (index).days).to_date %></th>
     <% end %>
-    <th>Avg Growth</th>
+    <th class="right">Avg Growth</th>
   </tr>
 <% @repositories.each do |r| %>
   <tr>
@@ -123,7 +176,7 @@ td.left {
       <% index = - days_to_show + i %>
       <td><%= recent[index].try(:value) %></td>
     <% end %>
-    <td><%= r.repository_stats.try(:modules_day).to_i %>/day</td>
+    <td class="right"><%= r.repository_stats.try(:modules_day).to_i %>/day</td>
   </tr>
 <% end %>
 </table>
@@ -134,7 +187,10 @@ retrieval.  Growth rates are calculated by averaging data over the
 last week.
 </p>
 <p>
-The Pear (PHP) was only added recently and hasn't accumulated much
+The Pear (PHP) archive was only added recently and hasn't accumulated much
 data.  It's so far off from the others that it pretty much blows the
 graph, so it isn't included.
+</p>
+<p>
+If you'd like to check out the data in more detail, you are welcome to <a href="/modulecounts.csv">download</a> it in a CSV file.
 </p>

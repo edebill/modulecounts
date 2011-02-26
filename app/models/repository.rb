@@ -61,4 +61,8 @@ class Repository < ActiveRecord::Base
     end
   end
 
+  def count_for_date(date)
+    self.counts.select { |c| c.record_date.to_date == date }.first
+  end
+
 end
