@@ -1,2 +1,2 @@
-rvm use ruby-1.9.2-p0@modulecounts
+rvm use ruby-1.9.2-p180@modulecounts --create
 
