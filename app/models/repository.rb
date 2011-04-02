@@ -30,7 +30,7 @@ class Repository < ActiveRecord::Base
   def fetch_count
     page = HTTParty.get(self.url)
     if md = page.match(self.regex)
-      md[1].gsub(",", "").to_i
+      md[1].gsub(",", "").gsub(".","").to_i
     end
   end
 
