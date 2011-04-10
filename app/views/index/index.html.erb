@@ -164,14 +164,14 @@ td.right,th.right {
     <% days_to_show = 5 %>
     <% (0..(days_to_show - 1)).each do |i| %>
       <% index = days_to_show - i - 1 %>
-      <th><%= (Time.now - (index).days).to_date %></th>
+      <th><%= (@latest.record_date - (index).days).to_date %></th>
     <% end %>
     <th class="right">Avg Growth</th>
   </tr>
 <% @repositories.each do |r| %>
   <tr>
     <td class="left"><a href="<%= r.url %>"><%= r.name %></a></td>
-    <% recent = r.last_week %>
+    <% recent = r.day_sequence(@latest.record_date - 6.days, 7) %>
     <% (0..(days_to_show - 1)).each do |i| %>
       <% index = - days_to_show + i %>
       <td><%= recent[index].try(:value) %></td>
