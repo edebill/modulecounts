@@ -1,8 +1,9 @@
 class Repository < ActiveRecord::Base
-  validates_presence_of :name, :url, :regex
-  
+  validates_presence_of :name, :url
+
   has_many :counts, :dependent => :destroy
-  has_one :repository_stats
+  has_one :repository_stats, :dependent => :destroy
+  has_one :sampler, :dependent => :destroy
 
   def last_week
     day_sequence(Time.now.utc - 6.days, 7)
@@ -28,10 +29,7 @@ class Repository < ActiveRecord::Base
   end
 
   def fetch_count
-    page = HTTParty.get(self.url)
-    if md = page.match(self.regex)
-      md[1].gsub(",", "").gsub(".","").to_i
-    end
+    self.sampler.sample
   end
 
   def update_count

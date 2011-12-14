@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110402141640) do
+ActiveRecord::Schema.define(:version => 20111214031405) do
 
   create_table "counts", :force => true do |t|
     t.integer  "repository_id"
@@ -41,5 +42,14 @@ ActiveRecord::Schema.define(:version => 20110402141640) do
   end
 
   add_index "repository_stats", ["repository_id"], :name => "index_repository_stats_on_repository_id", :unique => true
+
+  create_table "samplers", :force => true do |t|
+    t.integer  "repository_id"
+    t.string   "type"
+    t.string   "data_url"
+    t.text     "configuration_json"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
