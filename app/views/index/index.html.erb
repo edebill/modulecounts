@@ -51,7 +51,8 @@
 
 
   $(document).ready(function(){
-    show_since(0);
+    start = $('input:[name="start"]:checked').val();
+    show_since(start);
 
     $("input").click(function(event) {
       start = $('input:[name="start"]:checked').val();
@@ -62,7 +63,7 @@
 </script>
 <style>
 table.module-data {
-    width: 650px;
+    width: 750px;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -146,10 +147,15 @@ td.right,th.right {
 <div id="time-controls" class="horizontal controls">
   <ul>
     <li class="list_header">time period</li>
-    <li><input type="radio" name="start" value="0" checked > all time</li>
     <% if Count.earliest.record_date < Time.now - 1.year %>
-    <li><input type="radio" name="start" value="<%= (Time.now - 1.year).utc.to_i * 1000 %>"> last year</li>
+      <% all_time_checked = '' %>
+      <% last_year_checked = 'checked' %>
+    <% else %>
+      <% all_time_checked = 'checked' %>
+      <% last_year_checked = '' %>
     <% end %>
+    <li><input type="radio" name="start" value="0" <%= all_time_checked %> > all time</li>
+    <li><input type="radio" name="start" value="<%= (Time.now - 1.year).utc.to_i * 1000 %>" <%= last_year_checked %> > last year</li>
 <% [90, 30, 7].each do |days| %>
     <li><input type="radio" name="start" value="<%= (Time.now - days.days).utc.to_i * 1000 %>"> last <%= days %> days</li>
 <% end %>
@@ -161,10 +167,10 @@ td.right,th.right {
 <table class="module-data">
   <tr>
     <th></th>
-    <% days_to_show = 5 %>
+    <% days_to_show = 7 %>
     <% (0..(days_to_show - 1)).each do |i| %>
       <% index = days_to_show - i - 1 %>
-      <th><%= (@latest.record_date - (index).days).to_date %></th>
+      <th><%= (@latest.record_date - (index).days).strftime "%b %e" %></th>
     <% end %>
     <th class="right">Avg Growth</th>
   </tr>
@@ -181,15 +187,21 @@ td.right,th.right {
 <% end %>
 </table>
 
-<p>Data is collected by scraping the relevant websites once a day
-via a cron job and then stored in a Postgresql database for later
-retrieval.  Growth rates are calculated by averaging data over the 
-last week.
+<p>Data is collected by scraping the relevant websites once a day via
+a cron job and then stored in a Postgresql database for later
+retrieval. Growth rates are calculated by averaging data over the last
+week. I'm gathering counts of separate modules, so multiple versions
+of the same module/package/gem only count once (foo-1.2, foo-1.3 and
+bar-1.0 would count as 2 total).
+</p>
+<p>The <a href="https://npmjs.org">npm</a> repository got a site refresh at
+the end of July that looks really nice. I was slow to update my code, so
+there's a gap in the records.
 </p>
 <p>
 Much thanks to <a href="http://wwatson.me">W Watson</a> for pointing
 out the <a href="http://nuget.org">nuget</a> (.NET) package
-repository. I've just (Feb 25, 2012) added it to the list. I'd like
+repository. I'd like
 to add more repositories. If you have suggestions, please send them
 to erik@debill.org.
 </p>
