@@ -12,7 +12,7 @@ class RegexSampler < Sampler
     response = HTTParty.get(self.data_url)
 
     if md = response.body.match(self.regex)
-      count = md[1].gsub(",", "").gsub(".","").to_i
+      count = md[1].gsub(/\D/, "").to_i
     end
 
     if self.config(:offset)
