@@ -8,10 +8,11 @@ class AddClojars < ActiveRecord::Migration
     r.sampler = s
 
     r.save!
+    r.update_count
   end
 
   def self.down
-    r = Repository.find(:name => 'Clojars (Clojure)')
+    r = Repository.where(:name => 'Clojars (Clojure)').first
     r.destroy
   end
 end
