@@ -12,7 +12,7 @@
       selected.push(input.value);
     });
 
-    len =  jQuery.grep(selected, function(n,i) { 
+    len =  jQuery.grep(selected, function(n,i) {
        return repo == n }).length;
 
     return len > 0;
@@ -34,10 +34,10 @@
                        'data': entries });
       }
     }
-  
+
     show_graph(dataset);
   }
-    
+
 
   function show_graph(dataset) {
     $.plot($("#count-graph"), dataset, {
@@ -45,8 +45,8 @@
                                         points: { show: true,
                                                   radius: 1 }},
                               xaxis: { mode: "time" },
-                              legend: { position: "se" } }); 
-    
+                              legend: { position: "se" } });
+
   }
 
 
@@ -107,7 +107,7 @@ td.right,th.right {
     clear: left;
     padding-top: 10px;
     width: 600px;
-    
+
 }
 
 .controls ul {
@@ -137,7 +137,7 @@ td.right,th.right {
 <div id="content-control" class="vertical controls">
   <ul>
   <li class="list_header">Include</li>
-  
+
     <% @repositories.each do |r| %>
   <li> <input type="checkbox" name="repo" value="<%= r.name %>"
      <% if r.graph %>checked<% end %>> <%= r.name %></li>
@@ -194,9 +194,9 @@ week. I'm gathering counts of separate modules, so multiple versions
 of the same module/package/gem only count once (foo-1.2, foo-1.3 and
 bar-1.0 would count as 2 total).
 </p>
-<p>The <a href="https://npmjs.org">npm</a> repository got a site refresh at
-the end of July that looks really nice. I was slow to update my code, so
-there's a gap in the records.
+<p>I just (Nov 25, 2012) added the <a href="http://clojars.org">Clojars</a>
+repository. Much thanks to Jonas Clasen (jonasac <jonasac@student.matnat.uio.no>)
+for pointing it out to me.
 </p>
 <p>
 Much thanks to <a href="http://wwatson.me">W Watson</a> for pointing
