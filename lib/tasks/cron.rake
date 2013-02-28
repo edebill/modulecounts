@@ -8,4 +8,7 @@ task :cron => :environment do
       Rails.logger.error("error updating #{r.name} - #{e.inspect}")
     end
   end
+
+  CsvExport.update
+
 end

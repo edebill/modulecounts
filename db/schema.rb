@@ -11,12 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214031405) do
+ActiveRecord::Schema.define(:version => 20130228022158) do
 
   create_table "counts", :force => true do |t|
     t.integer  "repository_id"
     t.integer  "value"
     t.datetime "record_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "csv_exports", :force => true do |t|
+    t.text     "csv"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
