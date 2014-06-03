@@ -38,8 +38,20 @@
     show_graph(dataset);
   }
 
-
   function show_graph(dataset) {
+    for (var i=0;i<dataset.length;i++) {
+      var data = dataset[i].data
+        , current = 0
+        ;
+      for (var x=0;x<data.length;x++) {
+        if (data[x][1] && data[x][1] > 5000) {
+          current = data[x][1]
+        } else {
+          data[x][1] = current
+        }
+      }
+    }
+
     $.plot($("#count-graph"), dataset, {
                               series: { lines: { show: true },
                                         points: { show: true,
