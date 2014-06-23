@@ -11,7 +11,7 @@ gem 'rake', '0.9.2.2'
 gem 'pg', '0.17.1'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
