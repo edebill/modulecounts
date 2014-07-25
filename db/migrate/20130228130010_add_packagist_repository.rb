@@ -8,7 +8,6 @@ class AddPackagistRepository < ActiveRecord::Migration
     r.sampler = s
 
     r.save!
-    r.update_count
   end
 
   def self.down

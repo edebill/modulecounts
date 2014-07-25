@@ -5,7 +5,7 @@ class Sampler < ActiveRecord::Base
 
   before_save :serialize_configuration
 
-  attr_accessor :configuration
+  attr_accessor :configuration, :data_url, :regex, :repository_id
 
   def sample
     raise "you need to subclass and implement this"

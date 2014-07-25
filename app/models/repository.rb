@@ -1,4 +1,5 @@
 class Repository < ActiveRecord::Base
+  attr_accessor :graph, :name, :url
   validates_presence_of :name, :url
 
   has_many :counts, :dependent => :destroy

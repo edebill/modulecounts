@@ -7,7 +7,7 @@ class CreateCsvExports < ActiveRecord::Migration
     end
     
     export = CsvExport.new
-    export.csv = CsvExport.generate_csv
+    export.csv = ""  # no data yet.
     export.save
   end
 

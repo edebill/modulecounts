@@ -9,8 +9,6 @@ class UpdateHackageToNewServer < ActiveRecord::Migration
     s.offset = 0
     r.sampler = s
     r.save!
-    r.update_count
-    r.update_stats
   end
 
   def self.down

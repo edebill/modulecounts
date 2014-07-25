@@ -3,23 +3,23 @@ class ChangeWhichReposToShow < ActiveRecord::Migration
     ['npm (node.js)', 'nuget (.NET)'].each do |name|
       r = Repository.find_by_name(name)
       r.graph = true
-      r.save
+      r.save!
     end
 
     r = Repository.find_by_name('CPAN (search)')
     r.graph = false
-    r.save
+    r.save!
   end
 
   def self.down
     ['npm (node.js)', 'nuget (.NET)'].each do |name|
       r = Repository.find_by_name(name)
       r.graph = false
-      r.save
+      r.save!
     end
 
     r = Repository.find_by_name('CPAN (search)')
     r.graph = true
-    r.save
+    r.save!
   end
 end

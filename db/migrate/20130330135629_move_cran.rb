@@ -11,9 +11,6 @@ class MoveCran < ActiveRecord::Migration
     sampler.save
 
     cran.reload
-    cran.update_count
-    cran.update_stats
-
   end
 
   def self.down

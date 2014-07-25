@@ -3,8 +3,6 @@ class AddHackage < ActiveRecord::Migration
     r = Repository.create(:name => "Hackage (Haskell)",
                           :url => "http://holumbus.fh-wedel.de/hayoo/hayoo.html",
                           :regex => "more than ([\\d,.]+) packages")
-    r.update_count
-    r.update_stats
   end
 
   def self.down

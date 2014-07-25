@@ -5,8 +5,17 @@ class LoadRegexSamplers < ActiveRecord::Migration
       s = RegexSampler.new
       s.regex = r.regex
       s.data_url = r.url
-      r.sampler = s
-      r.save!
+      begin
+        r.sampler = s
+        r.save!
+      rescue Exception => e
+        puts e.inspect
+        puts r.inspect
+        puts r.errors.inspect
+        puts s.inspect
+        puts s.errors.inspect
+        raise e
+      end
     end
   end
 

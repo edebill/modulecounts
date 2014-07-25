@@ -1,21 +1,11 @@
 class AddRepositories < ActiveRecord::Migration
   def self.up
-    r = Repository.create(:name => "Rubygems.org",
-                          :url => "http://rubygems.org",
-                          :regex => "of ([\\d,]+) gems cut since")
-    r.update_count
+    now = Time.now
+    execute("insert into repositories (name, url, regex, created_at, updated_at) values ('Rubygems.org', 'http://rubygems.org', 'of ([\\d,]+) gems cut since', '#{now}', '#{now}')")
 
-    r = Repository.create(:name => "CPAN",
-                          :url => "http://www.cpan.org",
-                          :regex => "authors ([\\d,]+) modules")
-    r.update_count
+    execute("insert into repositories (name, url, regex, created_at, updated_at) values ('CPAN', 'http://www.cpan.org', 'authors ([\\d,]+) modules', '#{now}', '#{now}')")
 
-    r = Repository.create(:name => "PyPI",
-                          :url => "http://pypi.python.org/pypi",
-                          :regex => "currently\\s*<strong>([\\d,]+)</strong>\\s*packages")
-    r.update_count
-
-
+    execute("insert into repositories (name, url, regex, created_at, updated_at) values ('PyPI', 'http://pypi.python.org/pypi', 'currently\\s*<strong>([\\d,]+)</strong>\\s*packages', '#{now}', '#{now}')")
 
   end
 
