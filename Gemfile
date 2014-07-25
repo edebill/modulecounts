@@ -36,3 +36,5 @@ end
 
 
 gem 'httparty'
+
+gem 'jsonpath'
