@@ -1,5 +1,5 @@
 class NewNpmSiteDesign < ActiveRecord::Migration
-  def self.up
+  def up
     r = Repository.find_by_name('npm (node.js)')
     r.sampler.destroy
 
@@ -10,10 +10,9 @@ class NewNpmSiteDesign < ActiveRecord::Migration
 
     r.sampler = s
     r.save!
-    r.update_count
   end
 
-  def self.down
+  def down
     r = Repository.find_by_name('npm (node.js)')
     s = JsonSampler.new
     s.data_url = "http://search.npmjs.org/api/_all_docs?limit=0"

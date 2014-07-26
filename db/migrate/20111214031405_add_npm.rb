@@ -1,5 +1,5 @@
 class AddNpm < ActiveRecord::Migration
-  def self.up
+  def up
     r = Repository.new(:name => 'npm (node.js)', :url => 'http://npmjs.org')
     s = JsonSampler.new
     s.data_url = "http://search.npmjs.org/api/_all_docs?limit=0"
@@ -10,7 +10,7 @@ class AddNpm < ActiveRecord::Migration
     r.save!
   end
 
-  def self.down
+  def down
     r = Repository.find(:name => 'npm')
     r.destroy
   end

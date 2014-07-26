@@ -1,5 +1,5 @@
 class CreateRepositoryStats < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :repository_stats do |t|
       t.integer :repository_id
       t.integer :total
@@ -13,7 +13,7 @@ class CreateRepositoryStats < ActiveRecord::Migration
     add_index :repository_stats, :repository_id, :unique => true
   end
 
-  def self.down
+  def down
     drop_table :repository_stats
   end
 end

@@ -1,30 +1,25 @@
 class MoveCran < ActiveRecord::Migration
-  def self.up
+  def up
     cran = Repository.find_by_name('CRAN (R)')
     cran.url = 'http://cran.rproject.org'
-    cran.save
+    cran.save!
     
     sampler = cran.sampler
 
     sampler.data_url = 'http://cran.r-project.org/web/packages/'
     sampler.regex = "features\\s+([\\d,]+)\\s+available packages"
-    sampler.save
-
-    cran.reload
-    cran.update_count
-    cran.update_stats
-
+    sampler.save!
   end
 
-  def self.down
+  def down
     cran = Repository.find_by_name('CRAN (R)')
     cran.url = 'http://cran.opensourceresources.org'
-    cran.save
+    cran.save!
 
     sampler = cran.sampler
 
     sampler.data_url = "http://cran.opensourceresources.org/web/packages/"
     sampler.regex = "features\\s+([\\d,]+)\\s+available packages"
-    sampler.save
+    sampler.save!
   end
 end

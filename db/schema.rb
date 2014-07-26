@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(:version => 20140725143533) do
     t.integer  "repository_id"
     t.integer  "value"
     t.datetime "record_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "csv_exports", :force => true do |t|
     t.text     "csv"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "repositories", :force => true do |t|
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20140725143533) do
     t.string   "url"
     t.string   "regex"
     t.datetime "last_checked"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "graph"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "repository_stats", :force => true do |t|
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20140725143533) do
     t.datetime "last_updated"
     t.integer  "modules_day"
     t.integer  "days_to_crossover"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   add_index "repository_stats", ["repository_id"], :name => "index_repository_stats_on_repository_id", :unique => true
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20140725143533) do
     t.string   "type"
     t.string   "data_url"
     t.text     "configuration_json"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

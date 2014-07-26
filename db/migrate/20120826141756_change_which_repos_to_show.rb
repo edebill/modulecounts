@@ -1,5 +1,5 @@
 class ChangeWhichReposToShow < ActiveRecord::Migration
-  def self.up
+  def up
     ['npm (node.js)', 'nuget (.NET)'].each do |name|
       r = Repository.find_by_name(name)
       r.graph = true
@@ -11,7 +11,7 @@ class ChangeWhichReposToShow < ActiveRecord::Migration
     r.save
   end
 
-  def self.down
+  def down
     ['npm (node.js)', 'nuget (.NET)'].each do |name|
       r = Repository.find_by_name(name)
       r.graph = false

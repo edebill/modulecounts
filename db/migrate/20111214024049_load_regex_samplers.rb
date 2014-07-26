@@ -1,5 +1,5 @@
 class LoadRegexSamplers < ActiveRecord::Migration
-  def self.up
+  def up
     Repository.find_each do |r|
       next if r.sampler
       s = RegexSampler.new
@@ -10,7 +10,7 @@ class LoadRegexSamplers < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def down
     # nothing to be done
   end
 end

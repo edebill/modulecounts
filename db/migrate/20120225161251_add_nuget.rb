@@ -1,5 +1,5 @@
 class AddNuget < ActiveRecord::Migration
-  def self.up
+  def up
     r = Repository.new(:name => 'nuget (.NET)', :url => 'http://nuget.org')
     s = RegexSampler.new
     s.data_url = "http://nuget.org/packages"
@@ -10,7 +10,7 @@ class AddNuget < ActiveRecord::Migration
     r.save!
   end
 
-  def self.down
+  def down
     r = Repository.find(:name => 'nuget')
     r.destroy
   end
