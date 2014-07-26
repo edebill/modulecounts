@@ -1,5 +1,5 @@
 class CreateCsvExports < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :csv_exports do |t|
       t.text :csv
 
@@ -7,11 +7,11 @@ class CreateCsvExports < ActiveRecord::Migration
     end
     
     export = CsvExport.new
-    export.csv = CsvExport.generate_csv
-    export.save
+    export.csv = ""  # no data - rake cron will fill some in
+    export.save!
   end
 
-  def self.down
+  def down
     drop_table :csv_exports
   end
 end

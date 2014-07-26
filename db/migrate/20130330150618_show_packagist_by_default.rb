@@ -1,13 +1,13 @@
 class ShowPackagistByDefault < ActiveRecord::Migration
-  def self.up
+  def up
     pi = Repository.find_by_name("Packagist (PHP)")
     pi.graph = true
-    pi.save
+    pi.save!
   end
 
-  def self.down
+  def down
     pi = Repository.find_by_name("Packagist (PHP)")
     pi.graph = false
-    pi.save
+    pi.save!
   end
 end

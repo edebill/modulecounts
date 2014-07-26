@@ -1,15 +1,15 @@
 class UpdateNpmRegex < ActiveRecord::Migration
-  def self.up
+  def up
   	r = Repository.find_by_name('npm (node.js)')
   	s = r.sampler
   	s.regex = "Total Packages:\\s+(\\d.*\\d)"   # they started putting spaces between 1000s groups
-  	s.save
+  	s.save!
   end
 
-  def self.down
+  def down
   	r = Repository.find_by_name('npm (node.js)')
   	s = r.sampler
   	s.regex = "Total Packages:\\s+(\\d+)"
-  	s.save
+  	s.save!
   end
 end

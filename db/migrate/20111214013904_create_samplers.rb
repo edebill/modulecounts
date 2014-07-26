@@ -1,5 +1,5 @@
 class CreateSamplers < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :samplers do |t|
       t.integer :repository_id
       t.string :type
@@ -9,7 +9,7 @@ class CreateSamplers < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def down
     drop_table :samplers
   end
 end

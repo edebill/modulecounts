@@ -1,5 +1,5 @@
 class CreateCounts < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :counts do |t|
       t.integer :repository_id
       t.integer :value
@@ -9,7 +9,7 @@ class CreateCounts < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def down
     drop_table :counts
   end
 end

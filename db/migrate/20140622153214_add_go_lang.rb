@@ -1,7 +1,7 @@
 class AddGoLang < ActiveRecord::Migration
-  @name = 'GoDoc (Go)'
-  @url = 'http://godoc.org/-/index'
-  def self.up
+  def up
+    @name = 'GoDoc (Go)'
+    @url = 'http://godoc.org/-/index'
     r = Repository.new(:name => @name, :url => @url)
     s = RegexSampler.new
     s.data_url = @url
@@ -10,10 +10,11 @@ class AddGoLang < ActiveRecord::Migration
     r.sampler = s
 
     r.save!
-    r.update_count
   end
 
-  def self.down
+  def down
+    @name = 'GoDoc (Go)'
+
     r = Repository.where(:name => @name).first
     r.destroy
   end

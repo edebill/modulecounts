@@ -1,5 +1,5 @@
 class AddClojars < ActiveRecord::Migration
-  def self.up
+  def up
     r = Repository.new(:name => 'Clojars (Clojure)', :url => 'http://clojars.org')
     s = RegexSampler.new
     s.data_url = "http://clojars.org/projects"
@@ -8,10 +8,9 @@ class AddClojars < ActiveRecord::Migration
     r.sampler = s
 
     r.save!
-    r.update_count
   end
 
-  def self.down
+  def down
     r = Repository.where(:name => 'Clojars (Clojure)').first
     r.destroy
   end

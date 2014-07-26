@@ -1,5 +1,5 @@
 class AddPackagistRepository < ActiveRecord::Migration
-  def self.up
+  def up
     r = Repository.new(:name => 'Packagist (PHP)', :url => 'http://packagist.org')
     s = RegexSampler.new
     s.data_url = "http://packagist.org/statistics"
@@ -8,10 +8,9 @@ class AddPackagistRepository < ActiveRecord::Migration
     r.sampler = s
 
     r.save!
-    r.update_count
   end
 
-  def self.down
+  def down
     r = Repository.where(:name => 'Packagist (PHP)').first
     r.destroy
   end
