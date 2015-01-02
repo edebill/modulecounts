@@ -1,9 +1,22 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  repository_id: 1
+  repository: one
   value: 1
+  record_date: <%= Time.now - 2.days %>
 
 two:
-  repository_id: 1
+  repository: one
   value: 1
+  record_date: <%= Time.now - 1.days %>
+
+three:
+  repository: two
+  value: 1
+  record_date: <%= Time.now - 2.days %>
+
+four:
+  repository: two
+  value: 1
+  record_date: <%= Time.now - 1.days %>
+
