@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150101130359) do
+ActiveRecord::Schema.define(:version => 20150309132532) do
 
   create_table "counts", :force => true do |t|
     t.integer  "repository_id"
