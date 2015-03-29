@@ -44,7 +44,7 @@
         , current = 0
         ;
       for (var x=0;x<data.length;x++) {
-        if (data[x][1] && data[x][1] > 5000) {
+        if (data[x][1] && data[x][1] > (0.15 * current)) {
           current = data[x][1]
         } else {
           data[x][1] = current
