@@ -12,7 +12,7 @@ class RegexSampler < Sampler
     response = HTTParty.get(self.data_url)
 
     if md = response.body.match(self.regex)
-      count = md[1].gsub(/\D/, "").to_i
+      count = md[1].gsub(/&#\d+;/, "").gsub(/\D/, "").to_i
     else
       fail "RegexSampler didn't find count (sampler #{self.id}, #{self.repository.name})"
     end
