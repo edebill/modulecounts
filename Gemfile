@@ -1,14 +1,18 @@
 source 'http://rubygems.org'
-ruby "2.1.2"
+ruby "2.3.0"
 
-gem 'rails', '3.2.18'
+gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'arel', :git => 'git://github.com/rails/arel.git'
+gem 'rack', :git => 'git://github.com/rack/rack.git'
 
 gem 'rake', '0.9.2.2'
+
+gem 'nokogiri', '1.6.7.rc4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', '0.17.1'
+gem 'pg', '~> 0.18.4'
 
 # Use unicorn as the web server
 gem 'unicorn'

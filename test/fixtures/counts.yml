@@ -3,7 +3,10 @@
 one:
   repository_id: 1
   value: 1
+  record_date: <%= 3.days.ago %>
 
 two:
   repository_id: 1
   value: 1
+  record_date:
+  record_date: <%= 2.days.ago %>

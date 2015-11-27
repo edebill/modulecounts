@@ -9,53 +9,55 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150309132532) do
+ActiveRecord::Schema.define(version: 20151127163305) do
 
-  create_table "counts", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "counts", force: :cascade do |t|
     t.integer  "repository_id"
     t.integer  "value"
     t.datetime "record_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  create_table "csv_exports", :force => true do |t|
+  create_table "csv_exports", force: :cascade do |t|
     t.text     "csv"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "repositories", :force => true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.string   "regex"
+  create_table "repositories", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "url",          limit: 255
+    t.string   "regex",        limit: 255
     t.datetime "last_checked"
     t.boolean  "graph"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  create_table "repository_stats", :force => true do |t|
+  create_table "repository_stats", force: :cascade do |t|
     t.integer  "repository_id"
     t.integer  "total"
     t.datetime "last_updated"
     t.integer  "modules_day"
     t.integer  "days_to_crossover"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["repository_id"], name: "index_repository_stats_on_repository_id", unique: true, using: :btree
   end
 
-  add_index "repository_stats", ["repository_id"], :name => "index_repository_stats_on_repository_id", :unique => true
-
-  create_table "samplers", :force => true do |t|
+  create_table "samplers", force: :cascade do |t|
     t.integer  "repository_id"
-    t.string   "type"
-    t.string   "data_url"
+    t.string   "type",               limit: 255
+    t.string   "data_url",           limit: 255
     t.text     "configuration_json"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end
