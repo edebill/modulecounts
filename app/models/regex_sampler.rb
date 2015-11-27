@@ -11,10 +11,10 @@ class RegexSampler < Sampler
   def sample
     response = HTTParty.get(self.data_url)
 
-    if md = response.body.match(self.regex)
-      count = md[1].gsub(/&#\d+;/, "").gsub(/\D/, "").to_i
-    else
-      fail "RegexSampler didn't find count (sampler #{self.id}, #{self.repository.name})"
+    begin
+      count = extract(response.body, self.regex)
+    rescue ArgumentError
+      count = extract(response.body.force_encoding("ISO-8859-1"), self.regex)
     end
 
     if self.config(:offset)
@@ -22,5 +22,13 @@ class RegexSampler < Sampler
     end
 
     count
+  end
+
+  def extract(body, regexp)
+    if md = body.match(regexp)
+      md[1].gsub(/&#\d+;/, "").gsub(/\D/, "").to_i
+    else
+      fail "RegexSampler didn't find count (sampler #{self.id}, #{self.repository.name})"
+    end
   end
 end
