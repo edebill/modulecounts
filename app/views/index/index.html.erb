@@ -22,7 +22,7 @@
     dataset = [];
 
     for(i = 0; i < all_time.length; i++){
-      if( repo_is_selected(all_time[i]['label']) ){
+      if(repo_is_selected(all_time[i]['label']) ){
         entries = [];
         for(j = 0; j < all_time[i]['data'].length; j++) {
           datapoint = all_time[i]['data'][j];

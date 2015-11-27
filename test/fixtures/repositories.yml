@@ -1,11 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+ada:
+  id: 1
+  name: Ada
   url: MyString
   regex: MyString
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 
-two:
-  name: MyString
+cobol:
+  id: 2
+  name: Cobol
   url: MyString
   regex: MyString
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>

@@ -1,15 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  repository_id: 1
   total: 1
   last_updated: 2010-12-10 22:14:42
   modules_day: 1
   days_to_crossover: 1
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+  repository_id: 1
 
 two:
-  repository_id: 1
   total: 1
   last_updated: 2010-12-10 22:14:42
   modules_day: 1
   days_to_crossover: 1
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+  repository_id: 2
