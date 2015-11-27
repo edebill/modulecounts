@@ -112,6 +112,11 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     raindrops (0.15.0)
     rake (0.9.2.2)
     sprockets (3.4.1)
@@ -143,6 +148,7 @@ DEPENDENCIES
   pg (~> 0.18.4)
   rack!
   rails!
+  rails_12factor
   rake (= 0.9.2.2)
   unicorn
 

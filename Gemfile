@@ -6,6 +6,7 @@ gem 'arel', :git => 'git://github.com/rails/arel.git'
 gem 'rack', :git => 'git://github.com/rack/rack.git'
 
 gem 'rake', '0.9.2.2'
+gem 'rails_12factor', group: :production
 
 gem 'nokogiri', '1.6.7.rc4'
 
