@@ -206,13 +206,13 @@ week. I'm gathering counts of separate modules, so multiple versions
 of the same module/package/gem only count once (foo-1.2, foo-1.3 and
 bar-1.0 would count as 2 total).
 </p>
+<p>(May 30, 2016) Much thanks to Hiroki Noda for adding DUB
+(dlang). Fixed Hex.pm sampling, and removed link to CSV download until
+I can re-engineer it.
+</p>
 <p>(Apr 8, 2016) Updates to Rubygems.org and Npmjs.org broke both of those
 samplers. 
 </p>  
-<p>(Nov 27, 2015) I upgraded to Rails 5 (alpha), and ruby 2.3.0-preview1.
-  I also fixed the nuget repo, which got a site update that broke sampling
-  some time ago. New repositories: Perl 6, and Drupal
-</p>
 <p>I'd like to add more repositories. If you have suggestions, please send them
 to erik@debill.org.
 </p>
@@ -223,5 +223,14 @@ site refresh and the numbers came into line with each other. It looks
 funny on the graph, but it's an interesting bit of history.
 </p>
 <p>
-If you'd like to check out the data in more detail, you are welcome to <a href="/modulecounts.csv">download</a> it in a CSV file.
+GoDoc is weird. It's not a true package repository in the same sense
+as all the others, but as far as I can tell it's the closest GoLang
+has. Be aware that it pretty drastically overcounts the number of
+packages. Don't use the raw numbers to compare with other
+languages. You can still watch the line to see changes in velocity,
+though.
+</p>
+<p>
+  I used to support downloading the full database in CSV format, but the
+  database has outgrown that (even with offline CSV generation). 
 </p>
