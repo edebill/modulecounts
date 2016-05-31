@@ -9,6 +9,5 @@ task :cron => :environment do
     end
   end
 
-  CsvExport.update
-
+#  CsvExport.update
 end
