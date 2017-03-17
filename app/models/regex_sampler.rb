@@ -25,7 +25,7 @@ class RegexSampler < Sampler
   end
 
   def extract(body, regexp)
-    if md = body.match(regexp)
+    if md = Regexp.new(regexp, Regexp::MULTILINE).match(body)
       md[1].gsub(/&#\d+;/, "").gsub(/\D/, "").to_i
     else
       fail "RegexSampler didn't find count (sampler #{self.id}, #{self.repository.name})"
