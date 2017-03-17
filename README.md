@@ -3,12 +3,14 @@ Modulecounts
 
 Uses 'rake cron' to poll all known repos for data each night.
 
+May fail in development if you have ipv6 enabled - seems to cause
+problems connecting to some repositories.
 
 
 Dev Setup
 ---------
 
-Runs on Heroku cedar stack with MRI 2.1.2
+Runs on Heroku cedar stack with MRI 2.3.2
 
 To run bundle install:
 
