@@ -1,14 +1,14 @@
 source 'http://rubygems.org'
-ruby "2.3.0"
+ruby "2.3.2"
 
-gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'arel', :git => 'git://github.com/rails/arel.git'
-gem 'rack', :git => 'git://github.com/rack/rack.git'
+gem 'rails', '~> 5.0.1'
+gem 'arel', '~> 7.0.0'
+gem 'rack', '~> 2.0.1'
 
 gem 'rake', '0.9.2.2'
 gem 'rails_12factor', group: :production
 
-gem 'nokogiri', '1.6.7.rc4'
+gem 'nokogiri', '1.7.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,5 +41,5 @@ end
 
 
 gem 'httparty'
-
+gem 'httpclient'
 gem 'jsonpath'
