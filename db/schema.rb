@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530141025) do
+ActiveRecord::Schema.define(version: 20170317145504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,14 +19,14 @@ ActiveRecord::Schema.define(version: 20160530141025) do
     t.integer  "repository_id"
     t.integer  "value"
     t.datetime "record_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "csv_exports", force: :cascade do |t|
     t.text     "csv"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "repositories", force: :cascade do |t|
@@ -35,9 +34,9 @@ ActiveRecord::Schema.define(version: 20160530141025) do
     t.string   "url",          limit: 255
     t.string   "regex",        limit: 255
     t.datetime "last_checked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "graph"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
   end
 
   create_table "repository_stats", force: :cascade do |t|
@@ -46,8 +45,8 @@ ActiveRecord::Schema.define(version: 20160530141025) do
     t.datetime "last_updated"
     t.integer  "modules_day"
     t.integer  "days_to_crossover"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["repository_id"], name: "index_repository_stats_on_repository_id", unique: true, using: :btree
   end
 
@@ -56,8 +55,8 @@ ActiveRecord::Schema.define(version: 20160530141025) do
     t.string   "type",               limit: 255
     t.string   "data_url",           limit: 255
     t.text     "configuration_json"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
