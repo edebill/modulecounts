@@ -60,7 +60,7 @@ class Repository < ActiveRecord::Base
   end
 
   def count_for_date(date)
-    self.counts.select { |c| c.record_date.to_date == date }.first
+    self.counts.where("date_trunc('day', counts.record_date) = date(?)", date).first
   end
 
 end
