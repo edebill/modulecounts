@@ -9,3 +9,4 @@ tmp/**/*
 /capybara-*
 **\#*
 .env
+*.swp
