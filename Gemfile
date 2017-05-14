@@ -13,7 +13,9 @@ gem 'nokogiri', '~> 1.7.2'
 
 gem 'pg', '~> 0.20.0'
 
-gem 'puma'
+
+#gem 'puma'
+gem 'unicorn'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
