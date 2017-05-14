@@ -1,35 +1,19 @@
 source 'http://rubygems.org'
-ruby "2.3.2"
+ruby "2.4.1"
 
-gem 'rails', '~> 5.0.1'
-gem 'arel', '~> 7.0.0'
-gem 'rack', '~> 2.0.1'
+gem 'rails', '5.1.0'
 
-gem 'rake', '0.9.2.2'
+gem 'rake', '~> 12.0.0'
 gem 'rails_12factor', group: :production
 
-gem 'nokogiri', '1.7.0.1'
+gem 'nokogiri', '~> 1.7.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', '~> 0.18.4'
+gem 'pg', '~> 0.20.0'
 
-# Use unicorn as the web server
-gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+gem 'puma'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
