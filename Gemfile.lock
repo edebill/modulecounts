@@ -66,6 +66,7 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
+    parallel (1.11.2)
     pg (0.20.0)
     puma (3.8.2)
     rack (2.0.2)
@@ -124,6 +125,7 @@ DEPENDENCIES
   httpclient
   jsonpath
   nokogiri (~> 1.7.2)
+  parallel
   pg (~> 0.20.0)
   puma
   rails (= 5.1.0)

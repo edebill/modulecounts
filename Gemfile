@@ -7,6 +7,7 @@ gem 'rake', '~> 12.0.0'
 gem 'rails_12factor', group: :production
 
 gem 'nokogiri', '~> 1.7.2'
+gem 'parallel'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

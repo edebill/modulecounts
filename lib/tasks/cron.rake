@@ -1,6 +1,6 @@
 desc "This task runs nightly"
 task :cron => :environment do
-  Repository.all.each do |r|
+  Parallel.each(Repository.all, in_threads: 4) do |r|
     begin
       puts "updating #{r.name}"
       r.update_count
@@ -11,5 +11,6 @@ task :cron => :environment do
     end
   end
 
+  puts "making CSV export"
   CsvExport.update
 end
