@@ -2,7 +2,7 @@
 
     var all_time = [];
     <% @repositories.each do |r| %>
-      var entries = [ <%= r.counts.order(:record_date).collect { |c| "[#{c.record_date.to_i * 1000},#{c.value}]"}.join(",") %> ]
+      var entries = <%= r.js_timeseries.to_json %>;
       all_time.push({ label: "<%= r.name %>", data: entries });
     <% end %>
 
