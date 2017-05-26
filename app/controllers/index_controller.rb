@@ -8,7 +8,7 @@ class IndexController < ApplicationController
       format.html { render }
       format.csv  {
 
-        render :content_type => 'text/csv', :text =>  CsvExport.first.csv
+        render content_type: 'text/csv', inline:  CsvExport.first.csv
       }
     end
   end
