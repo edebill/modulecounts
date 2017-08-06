@@ -10,52 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514173011) do
+ActiveRecord::Schema.define(version: 20170806122556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "counts", force: :cascade do |t|
-    t.integer  "repository_id"
-    t.integer  "value"
+  create_table "counts", id: :serial, force: :cascade do |t|
+    t.integer "repository_id"
+    t.integer "value"
     t.datetime "record_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "csv_exports", force: :cascade do |t|
-    t.text     "csv"
+  create_table "csv_exports", id: :serial, force: :cascade do |t|
+    t.text "csv"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "repositories", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "url",          limit: 255
-    t.string   "regex",        limit: 255
+  create_table "repositories", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "url", limit: 255
+    t.string "regex", limit: 255
     t.datetime "last_checked"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "graph"
-    t.boolean  "hidden",                   default: false
+    t.boolean "graph"
+    t.boolean "hidden", default: false
   end
 
-  create_table "repository_stats", force: :cascade do |t|
-    t.integer  "repository_id"
-    t.integer  "total"
+  create_table "repository_stats", id: :serial, force: :cascade do |t|
+    t.integer "repository_id"
+    t.integer "total"
     t.datetime "last_updated"
-    t.integer  "modules_day"
-    t.integer  "days_to_crossover"
+    t.integer "modules_day"
+    t.integer "days_to_crossover"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["repository_id"], name: "index_repository_stats_on_repository_id", unique: true, using: :btree
+    t.index ["repository_id"], name: "index_repository_stats_on_repository_id", unique: true
   end
 
-  create_table "samplers", force: :cascade do |t|
-    t.integer  "repository_id"
-    t.string   "type",               limit: 255
-    t.string   "data_url",           limit: 255
-    t.text     "configuration_json"
+  create_table "samplers", id: :serial, force: :cascade do |t|
+    t.integer "repository_id"
+    t.string "type", limit: 255
+    t.string "data_url", limit: 255
+    t.text "configuration_json"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
