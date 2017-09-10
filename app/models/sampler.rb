@@ -47,6 +47,6 @@ class Sampler < ActiveRecord::Base
   end
 
   def serialize_configuration
-    self.configuration_json = @config.to_json
+    self.configuration_json = @config.to_json if @config
   end
 end
