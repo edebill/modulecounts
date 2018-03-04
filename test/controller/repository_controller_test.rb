@@ -1,6 +1,16 @@
 require 'test_helper'
 
 class RepositoryControllerTest < ActionController::TestCase
+  test "gets list of repositories" do
+    get :index
+
+    assert_response :success
+
+    repos = JSON.parse(response.body)
+
+    assert_equal(2, repos.length, "wrong number of repos")
+  end
+
   test "get all counts for a repository" do
     get :counts, params: { id: 1 }, format: "json"
 
