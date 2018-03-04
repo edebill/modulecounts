@@ -7,10 +7,8 @@ class IndexController < ApplicationController
     respond_to do |format|
       format.html { render }
       format.csv  {
-
         render content_type: 'text/csv', inline:  CsvExport.first.csv
       }
     end
   end
-
 end

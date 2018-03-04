@@ -10,6 +10,7 @@ class RepositoryController < ApplicationController
       }
     end
 
+    response.headers['Cache-Control'] = 'public, max-age=300'
     render json: json
   end
 
@@ -32,6 +33,7 @@ class RepositoryController < ApplicationController
       }
     end
 
+    response.headers['Cache-Control'] = 'public, max-age=300'
     render json: json
   end
 end
