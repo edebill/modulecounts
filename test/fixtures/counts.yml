@@ -2,11 +2,20 @@
 
 one:
   repository_id: 1
-  value: 1
-  record_date: <%= 3.days.ago %>
+  value: 3
+  record_date: <%= 1.days.ago %>
 
 two:
   repository_id: 1
+  value: 2
+  record_date: <%= 2.days.ago %>
+
+three:
+  repository_id: 1
   value: 1
-  record_date:
+  record_date: <%= 3.days.ago %>
+
+four:
+  repository_id: 2
+  value: 5
   record_date: <%= 2.days.ago %>
