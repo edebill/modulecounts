@@ -10,7 +10,7 @@ problems connecting to some repositories.
 Dev Setup
 ---------
 
-Runs on Heroku cedar stack with MRI 2.3.2
+Runs on Heroku cedar stack with MRI 2.4.1
 
 To run bundle install:
 
