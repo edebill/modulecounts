@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^3.3.0",
+    "elm": "^0.18.0",
+    "elm-webpack-loader": "^4.4.0"
+  },
+  "devDependencies": {
+    "elm-hot-loader": "^0.5.4",
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

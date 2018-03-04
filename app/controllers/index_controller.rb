@@ -11,4 +11,7 @@ class IndexController < ApplicationController
       }
     end
   end
+
+  def elm
+  end
 end

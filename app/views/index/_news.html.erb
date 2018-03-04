@@ -1,0 +1,39 @@
+<p>Data is collected by scraping the relevant websites once a day via
+a cron job and then stored in a Postgresql database for later
+retrieval. Growth rates are calculated by averaging data over the last
+week. I'm gathering counts of separate modules, so multiple versions
+of the same module/package/gem only count once (foo-1.2, foo-1.3 and
+bar-1.0 would count as 2 total).
+</p>
+<p>(Mar 4, 2018) Added Crystal Shards, as well as JSON endpoints
+  <tt>/repositories</tt> and <tt>/repositories/:id/counts/:start/:finish</tt>
+  as first steps towards revamping JS front end. (e.g.&nbsp;<a href="/repositories/1/counts/2018-02-01/2018-02-28">/repositories/1/counts/2018-02-01/2018-02-28</a>)
+<p>(Sept 10, 2017) Update Crates.io for their new data URL and add
+Nimble, the Nim package manager. Many thanks to Alex Libman for pointing
+me to it.
+</p>
+<p>(Aug 6, 2017) Go back to single-threaded fetch, as doing it in parallel
+seems to be causing intermittent sampling failures. Update DUB entry for
+new wording on their site.
+</p>
+<p>(May 14, 2017) Upgrade to Rails 5.1, ruby 2.4.1, switch from unicorn
+to puma, and add Vim Scripts repository. I can't believe I've had emacs
+for so long and no one has mentioned vim has its own repository.
+</p>
+<p>(Apr 2, 2017) Added Julia to list. Thanks to Bargava Subramanian for
+pointing it out. Return <a href="/modulecounts.csv">CSV download</a> feature.
+</p>
+<p>(Mar 17, 2017) Bower and GoDoc haven't been pulling numbers for a
+long time, and it doesn't seem to just be a matter of the number
+moving somewhere new. I'm removing them both, and adding Gopm.io,
+which seems to be more in-line with most languages' ideas about what a
+package manager is. Big thanks to
+  <a href="https://github.com/JesseAldridge">Jesse Aldridge</a> for pointing me to it.
+</p>
+<p>(May 30, 2016) Much thanks to Hiroki Noda for adding DUB
+(dlang). Fixed Hex.pm sampling, and removed link to CSV download until
+I can re-engineer it.
+</p>
+<p>(Apr 8, 2016) Updates to Rubygems.org and Npmjs.org broke both of those
+samplers. 
+</p>  
