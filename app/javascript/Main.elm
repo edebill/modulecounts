@@ -1,7 +1,8 @@
 module Main exposing (..)
 
+import Date exposing (..)
 import Html exposing (Html, h1, text)
-import Html.Attributes exposing (style)
+import Plot exposing (..)
 
 -- MODEL
 
@@ -19,10 +20,23 @@ init =
 
 view : Model -> Html Message
 view model =
-  -- The inline style is being used for example purposes in order to keep this example simple and
-  -- avoid loading additional resources. Use a proper stylesheet when building your own app.
-  h1 [style [("display", "flex"), ("justify-content", "center")]]
-     [text "Here will be an elm chart"]
+  viewSeries
+     [ line (List.map (\{ x, y } -> circle x y)) ]
+     [ { x = dateToFloat "2018-01-01", y = 1 }
+     , { x = dateToFloat "2018-01-02", y = 2 }
+     , { x = dateToFloat "2018-01-03", y = 3 }
+     , { x = dateToFloat "2018-01-04", y = 4 }
+     , { x = dateToFloat "2018-01-05", y = 5 }
+     , { x = dateToFloat "2018-01-08", y = 19 }
+     ]
+
+dateToFloat : String -> Float
+dateToFloat date =
+  case Date.fromString date of
+    Ok dateObject ->
+      Date.toTime dateObject
+    Err msg ->
+      0
 
 -- MESSAGE
 
