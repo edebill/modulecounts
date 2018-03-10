@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get "elm" => "index#elm"
   get "modulecounts.csv" => "index#index", format: "csv"
   get "repositories" => "repository#index", as: "index"
-  get "repositories/:id/counts" => "repository#counts"
-  get "repositories/:id/counts/:start/:finish" => "repository#counts"
+  get "repositories/:id/counts" => "repository#counts", as: "repository_counts"
+  get "repositories/:id/counts/:start/:finish" => "repository#counts", as: "repository_counts_range"
 end
