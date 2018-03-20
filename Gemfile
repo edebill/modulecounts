@@ -6,7 +6,7 @@ gem 'rails', '5.1.1'
 gem 'rake', '~> 12.0.0'
 gem 'rails_12factor', group: :production
 
-gem 'nokogiri', '~> 1.7.2'
+gem 'nokogiri', '~> 1.8.1'
 gem 'parallel'
 
 # Bundle edge Rails instead:
