@@ -8,7 +8,15 @@ class JsonPathSampler < Sampler
   end
 
   def sample
-    response = HTTParty.get(self.data_url, { :headers => { 'Accept' => 'Application/json'}})
+    response = HTTParty.get(
+      self.data_url,
+      {
+        :headers => {
+          'Accept' => 'Application/json',
+          'User-Agent' => 'modulecounts.com'
+        }
+      }
+    )
 
     json_path = JsonPath.new(self.path)
 
