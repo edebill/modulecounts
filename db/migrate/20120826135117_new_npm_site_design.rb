@@ -1,4 +1,4 @@
-class NewNpmSiteDesign < ActiveRecord::Migration
+class NewNpmSiteDesign < ActiveRecord::Migration[4.2]
   def up
     r = Repository.find_by_name('npm (node.js)')
     r.sampler.destroy

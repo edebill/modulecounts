@@ -1,4 +1,4 @@
-class AddPerl6 < ActiveRecord::Migration
+class AddPerl6 < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(name: repo_name,
                        url: "http://modules.perl6.org/",

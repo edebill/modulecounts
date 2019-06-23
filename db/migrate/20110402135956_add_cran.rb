@@ -1,4 +1,4 @@
-class AddCran < ActiveRecord::Migration
+class AddCran < ActiveRecord::Migration[4.2]
   def up
     Repository.create!(:name => "CRAN (R)",
                        :url => "http://cran.opensourceresources.org/web/packages/",

@@ -1,4 +1,4 @@
-class AddLuarocks < ActiveRecord::Migration
+class AddLuarocks < ActiveRecord::Migration[4.2]
   def up
     @name = 'LuaRocks (Lua)'
     @url = 'https://rocks.moonscript.org'

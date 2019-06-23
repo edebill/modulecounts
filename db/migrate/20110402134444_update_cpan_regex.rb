@@ -1,4 +1,4 @@
-class UpdateCpanRegex < ActiveRecord::Migration
+class UpdateCpanRegex < ActiveRecord::Migration[4.2]
   def up
     cpan = Repository.where(:name => 'CPAN').first
     cpan.regex = "in ([\\d,]+) distributions"

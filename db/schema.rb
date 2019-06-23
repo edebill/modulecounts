@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603171504) do
+ActiveRecord::Schema.define(version: 2018_06_03_171504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20180603171504) do
   end
 
   create_table "repositories", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "url", limit: 255
-    t.string "regex", limit: 255
+    t.string "name"
+    t.string "url"
+    t.string "regex"
     t.datetime "last_checked"
+    t.boolean "graph"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "graph"
     t.boolean "hidden", default: false
   end
 
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20180603171504) do
 
   create_table "samplers", id: :serial, force: :cascade do |t|
     t.integer "repository_id"
-    t.string "type", limit: 255
-    t.string "data_url", limit: 255
+    t.string "type"
+    t.string "data_url"
     t.text "configuration_json"
     t.datetime "created_at"
     t.datetime "updated_at"

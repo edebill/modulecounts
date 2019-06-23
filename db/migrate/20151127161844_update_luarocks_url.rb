@@ -1,4 +1,4 @@
-class UpdateLuarocksUrl < ActiveRecord::Migration
+class UpdateLuarocksUrl < ActiveRecord::Migration[4.2]
   def up
     repo = Repository.where(name: "LuaRocks (Lua)").first
     sampler = repo.sampler

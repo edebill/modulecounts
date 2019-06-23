@@ -1,4 +1,4 @@
-class FixCranUrl < ActiveRecord::Migration
+class FixCranUrl < ActiveRecord::Migration[4.2]
   def up
     repo = Repository.where(:name => "CRAN (R)").first
     repo.url = 'http://cran.r-project.org'

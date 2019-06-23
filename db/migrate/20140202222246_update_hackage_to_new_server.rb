@@ -1,4 +1,4 @@
-class UpdateHackageToNewServer < ActiveRecord::Migration
+class UpdateHackageToNewServer < ActiveRecord::Migration[4.2]
   def up
     r = Repository.find_by_name("Hackage (Haskell)")
     r.url = "http://hackage.haskell.org/"

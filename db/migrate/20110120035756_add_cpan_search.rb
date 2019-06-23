@@ -1,4 +1,4 @@
-class AddCpanSearch < ActiveRecord::Migration
+class AddCpanSearch < ActiveRecord::Migration[4.2]
   def up
     Repository.create!(:name => "CPAN (search)",
                        :url => "http://search.cpan.org",

@@ -1,4 +1,4 @@
-class AddHexPm < ActiveRecord::Migration
+class AddHexPm < ActiveRecord::Migration[4.2]
   def up
     @repo_name = 'Hex.pm (Elixir/Erlang)'
     @url = 'https://hex.pm/'

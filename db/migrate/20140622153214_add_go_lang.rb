@@ -1,4 +1,4 @@
-class AddGoLang < ActiveRecord::Migration
+class AddGoLang < ActiveRecord::Migration[4.2]
   def up
     @name = 'GoDoc (Go)'
     @url = 'http://godoc.org/-/index'

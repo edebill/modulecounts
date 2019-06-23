@@ -1,4 +1,4 @@
-class AddPackagistRepository < ActiveRecord::Migration
+class AddPackagistRepository < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(:name => 'Packagist (PHP)', :url => 'http://packagist.org')
     s = RegexSampler.new

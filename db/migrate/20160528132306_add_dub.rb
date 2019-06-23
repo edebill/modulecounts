@@ -1,4 +1,4 @@
-class AddDub < ActiveRecord::Migration
+class AddDub < ActiveRecord::Migration[5.0]
   def up
     @name = 'DUB (dlang)'
     @url = 'https://code.dlang.org'

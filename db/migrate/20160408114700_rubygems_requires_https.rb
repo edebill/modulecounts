@@ -1,4 +1,4 @@
-class RubygemsRequiresHttps < ActiveRecord::Migration
+class RubygemsRequiresHttps < ActiveRecord::Migration[5.0]
   def up
     repo = Repository.where(name: "Rubygems.org").first
     sampler = repo.sampler

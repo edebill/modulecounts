@@ -1,4 +1,4 @@
-class UpdateForPackagistNewDesign < ActiveRecord::Migration
+class UpdateForPackagistNewDesign < ActiveRecord::Migration[4.2]
   def up
     repo_name =  'Packagist (PHP)'
     repo = Repository.where(name: repo_name).first

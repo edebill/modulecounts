@@ -1,4 +1,4 @@
-class FixHexPm < ActiveRecord::Migration
+class FixHexPm < ActiveRecord::Migration[5.0]
   def change
     r = Repository.where(name: "Hex.pm (Elixir/Erlang)").first
     sampler = r.sampler

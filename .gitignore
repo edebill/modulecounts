@@ -10,3 +10,5 @@ tmp/**/*
 **\#*
 .env
 *.swp
+.DS_Store
+

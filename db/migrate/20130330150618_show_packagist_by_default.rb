@@ -1,4 +1,4 @@
-class ShowPackagistByDefault < ActiveRecord::Migration
+class ShowPackagistByDefault < ActiveRecord::Migration[4.2]
   def up
     pi = Repository.find_by_name("Packagist (PHP)")
     pi.graph = true

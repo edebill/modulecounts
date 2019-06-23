@@ -1,4 +1,4 @@
-class AddNpm < ActiveRecord::Migration
+class AddNpm < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(:name => 'npm (node.js)', :url => 'http://npmjs.org')
     s = JsonSampler.new

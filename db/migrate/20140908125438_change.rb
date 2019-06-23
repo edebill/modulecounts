@@ -1,4 +1,4 @@
-class Change < ActiveRecord::Migration
+class Change < ActiveRecord::Migration[4.2]
   def up
     r = Repository.find_by_name "Bower (JS)"
     sampler = r.sampler

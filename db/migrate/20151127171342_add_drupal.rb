@@ -1,4 +1,4 @@
-class AddDrupal < ActiveRecord::Migration
+class AddDrupal < ActiveRecord::Migration[5.0]
   def up
     r = Repository.new(name: repo_name,
                        url: "https://www.drupal.org/project/project_module",

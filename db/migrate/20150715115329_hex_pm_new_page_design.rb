@@ -1,4 +1,4 @@
-class HexPmNewPageDesign < ActiveRecord::Migration
+class HexPmNewPageDesign < ActiveRecord::Migration[4.2]
   def up
     repo_name =  'Hex.pm (Elixir/Erlang)'
     repo = Repository.where(name: repo_name).first

@@ -1,4 +1,4 @@
-class AddCratesRust < ActiveRecord::Migration
+class AddCratesRust < ActiveRecord::Migration[4.2]
   def up
     @repo_name = 'Crates.io (Rust)'
     @url = 'https://crates.io/'

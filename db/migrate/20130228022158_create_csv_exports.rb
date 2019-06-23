@@ -1,4 +1,4 @@
-class CreateCsvExports < ActiveRecord::Migration
+class CreateCsvExports < ActiveRecord::Migration[4.2]
   def up
     create_table :csv_exports do |t|
       t.text :csv

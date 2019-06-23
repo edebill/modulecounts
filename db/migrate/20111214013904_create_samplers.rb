@@ -1,4 +1,4 @@
-class CreateSamplers < ActiveRecord::Migration
+class CreateSamplers < ActiveRecord::Migration[4.2]
   def up
     create_table :samplers do |t|
       t.integer :repository_id

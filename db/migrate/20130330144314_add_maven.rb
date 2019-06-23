@@ -1,4 +1,4 @@
-class AddMaven < ActiveRecord::Migration
+class AddMaven < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(:name => 'Maven Central (Java)',
                        :url => 'http://www.maven.org',

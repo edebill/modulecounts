@@ -1,4 +1,4 @@
-class ChangeWhichReposToShow < ActiveRecord::Migration
+class ChangeWhichReposToShow < ActiveRecord::Migration[4.2]
   def up
     ['npm (node.js)', 'nuget (.NET)'].each do |name|
       r = Repository.find_by_name(name)

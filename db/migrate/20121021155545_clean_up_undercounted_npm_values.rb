@@ -1,7 +1,7 @@
-class CleanUpUndercountedNpmValues < ActiveRecord::Migration
+class CleanUpUndercountedNpmValues < ActiveRecord::Migration[4.2]
   def up
-  	r = Repository.find_by_name('npm (node.js)')
-  	Count.destroy_all(:repository_id => r.id, :value => [15, 16])
+#  	r = Repository.find_by_name('npm (node.js)')
+#  	Count.destroy_all(:repository_id => r.id, :value => [15, 16])
   end
 
   def down

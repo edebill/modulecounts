@@ -1,4 +1,4 @@
-class AddMelpa < ActiveRecord::Migration
+class AddMelpa < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(:name => 'Melpa (Emacs)', :url => 'http://melpa.milkbox.net')
     s = JsonHashKeyCountSampler.new

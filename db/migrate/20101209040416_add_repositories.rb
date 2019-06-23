@@ -1,4 +1,4 @@
-class AddRepositories < ActiveRecord::Migration
+class AddRepositories < ActiveRecord::Migration[4.2]
   def up
     Repository.create!(:name => "Rubygems.org",
                        :url => "http://rubygems.org",

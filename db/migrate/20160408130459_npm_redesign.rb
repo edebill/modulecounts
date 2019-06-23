@@ -1,4 +1,4 @@
-class NpmRedesign < ActiveRecord::Migration
+class NpmRedesign < ActiveRecord::Migration[5.0]
   def up
     repo = Repository.where(name: "npm (node.js)").first
     sampler = repo.sampler

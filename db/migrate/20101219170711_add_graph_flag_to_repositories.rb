@@ -1,4 +1,4 @@
-class AddGraphFlagToRepositories < ActiveRecord::Migration
+class AddGraphFlagToRepositories < ActiveRecord::Migration[4.2]
   def up
 #    add_column :repositories, :graph, :boolean
   end

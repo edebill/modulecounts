@@ -1,4 +1,4 @@
-class MoveCran < ActiveRecord::Migration
+class MoveCran < ActiveRecord::Migration[4.2]
   def up
     cran = Repository.find_by_name('CRAN (R)')
     cran.url = 'http://cran.rproject.org'

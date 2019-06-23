@@ -1,4 +1,4 @@
-class RubygemsNewSiteDesign < ActiveRecord::Migration
+class RubygemsNewSiteDesign < ActiveRecord::Migration[4.2]
   def up
     rubygems = Repository.where(:name => "Rubygems.org").first
     sampler = rubygems.sampler

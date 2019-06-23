@@ -1,4 +1,4 @@
-class AddClojars < ActiveRecord::Migration
+class AddClojars < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(:name => 'Clojars (Clojure)', :url => 'http://clojars.org')
     s = RegexSampler.new

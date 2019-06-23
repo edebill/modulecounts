@@ -1,4 +1,4 @@
-class AddHackage < ActiveRecord::Migration
+class AddHackage < ActiveRecord::Migration[4.2]
   def up
     Repository.create!(:name => "Hackage (Haskell)",
                        :url => "http://holumbus.fh-wedel.de/hayoo/hayoo.html",

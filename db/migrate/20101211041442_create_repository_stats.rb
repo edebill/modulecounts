@@ -1,4 +1,4 @@
-class CreateRepositoryStats < ActiveRecord::Migration
+class CreateRepositoryStats < ActiveRecord::Migration[4.2]
   def up
     create_table :repository_stats do |t|
       t.integer :repository_id

@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 ruby "2.4.1"
 
-gem 'rails', '5.1.1'
+gem 'rails', '5.2.3'
 
-gem 'rake', '~> 12.0.0'
+gem 'rake', '~> 12.3.2'
 gem 'rails_12factor', group: :production
 
 gem 'nokogiri', '~> 1.8.1'
@@ -12,7 +12,7 @@ gem 'parallel'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', '~> 0.20.0'
+gem 'pg', '~> 1.1.4'
 
 
 gem 'puma'

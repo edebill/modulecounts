@@ -1,4 +1,4 @@
-class AddNuget < ActiveRecord::Migration
+class AddNuget < ActiveRecord::Migration[4.2]
   def up
     r = Repository.new(:name => 'nuget (.NET)', :url => 'http://nuget.org')
     s = RegexSampler.new

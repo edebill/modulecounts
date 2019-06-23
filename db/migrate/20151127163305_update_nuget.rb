@@ -1,4 +1,4 @@
-class UpdateNuget < ActiveRecord::Migration
+class UpdateNuget < ActiveRecord::Migration[4.2]
   def up
     r = Repository.where(name: 'nuget (.NET)').first
     r.sampler.destroy

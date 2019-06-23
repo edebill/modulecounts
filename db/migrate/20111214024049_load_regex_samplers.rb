@@ -1,4 +1,4 @@
-class LoadRegexSamplers < ActiveRecord::Migration
+class LoadRegexSamplers < ActiveRecord::Migration[4.2]
   def up
     Repository.find_each do |r|
       next if r.sampler

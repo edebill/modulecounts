@@ -1,4 +1,4 @@
-class AddBower < ActiveRecord::Migration
+class AddBower < ActiveRecord::Migration[4.2]
   def up
     @repo_name = 'Bower (JS)'
     @url = 'http://bower.io/'
