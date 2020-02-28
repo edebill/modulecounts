@@ -3,7 +3,7 @@ ruby "2.4.1"
 
 gem 'rails', '5.2.3'
 
-gem 'rake', '~> 12.3.2'
+gem 'rake', '~> 12.3.3'
 gem 'rails_12factor', group: :production
 
 gem 'nokogiri', '~> 1.8.1'
