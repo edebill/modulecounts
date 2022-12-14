@@ -46,7 +46,7 @@ GEM
     builder (3.2.3)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
-    crass (1.0.4)
+    crass (1.0.6)
     erubi (1.8.0)
     gerbilcharts (0.10.16)
     globalid (0.4.2)
@@ -60,7 +60,7 @@ GEM
     jsonpath (1.0.4)
       multi_json
       to_regexp (~> 0.2.1)
-    loofah (2.2.3)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -71,7 +71,9 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -105,8 +107,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.4)
-      loofah (~> 2.2, >= 2.2.2)
+    rails-html-sanitizer (1.4.4)
+      loofah (~> 2.19, >= 2.19.1)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
